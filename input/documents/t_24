@@ -1,0 +1,61 @@
+Hands-on with Ubuntu TV, above and under the hood
+By Ryan Paul | Published about 3 hours ago
+
+At the Consumer Electronics Show (CES) in Las Vegas on Monday, platform vendor Canonical unveiled a special version of Ubuntu that is designed for televisions. The platform has an integrated media library manager and will offer DVR capabilities. It includes a variant of the Unity shell that is intended to be operated with a television remote control.
+
+The launch of Ubuntu TV fits with Canonical's efforts to bring its popular Linux distribution to a variety of mobile and embedded form factors. These include an Ubuntu smartphone operating system due to arrive by 2014. The decision to launch a platform for televisions was unexpected, but seems like a natural step for Canonical's evolving consumer electronics strategy.
+
+The company has already published the underlying source code for the new project. It is hosted in a Bazaar version control repository on Canonical's Launchpad collaboration website. The specialized television interface can run on top of a standard Ubuntu 11.10 installation.
+
+Documentation that describes how to compile and install the components from source code can be found on a page in the official Ubuntu wiki. We installed the Ubuntu TV environment on a conventional desktop computer in order to conduct hands-on testing. We also took a close look at the code to see how the new software works.
+
+The user interface
+
+Ubuntu TV has a similar look and feel to the desktop version of Ubuntu. The interface has been simplified and the individual elements have been stretched to look good on a high-definition television set. A navigation bar on the left-hand side of the screen provides access to the various top-level features. A search box is positioned prominently at the top of the screen. Volume and network status are displayed as large indicators next to a clock in the top right-hand corner.
+
+The main view shows the user's local media library. Users can navigate their video files and select one for playback. There is also a television listing view, which currently downloads and displays BBC channel schedules. The playback interface is simple, featuring a play/pause toggle button and a tracker for showing the progress of playback.
+
+The software seems to be at a relatively early stage of development. Some of the features haven't been fully implemented and will need to be fleshed out further—possibly with vendor-specific functionality.
+
+
+A demo video of the Ubuntu TV user interface
+Under the hood
+
+The Unity shell, which became Ubuntu's standard desktop user interface last year in version 11.04, was designed to improve the usability of the Linux desktop. Unity is about much more than just the user experience, however. Under the hood, it is supported by a stack of modular frameworks that offer considerable flexibility. The front-end is largely decoupled from the underlying task management and application launching capabilities that it exposes to the user. Canonical was able to take advantage of those architectural characteristics to accelerate the development of its television user interface.
+
+Unity can be extended with custom views, which Canonical calls lenses. The behavior and functionality of lenses is implemented in daemons that run in the background. The lens services exist as separate processes independent from the actual Unity shell. Communication between lenses and the Unity front-end is mediated by D-Bus, the standard interprocess communication system of the Linux desktop. The lens services are typically initialized through D-Bus activation, which means that they don't start running until they are needed by some activity in the front-end.
+
+The Ubuntu TV user experience consists of a Unity video lens and a heavily customized Unity front-end that has been designed for televisions. The video lens, which is implemented in Python, exposes the user's local media library to Unity with basic search and filtering support.
+
+The lens is also capable of parsing XBMC metadata for individual video files. XBMC is a popular open source media center application that uses "scrapers" to obtain detailed information from various Internet resources about movies and television shows. It can get synopses, movie posters, titles, genre classification, and other similar data. Unity can take advantage of that information to provide a richer display for video files that XBMC has identified.
+
+The lens looks for media in the user's video folder and a set of hard-coded subdirectories. Those subdirectories include placeholders for storing purchased and rented video content. It's not yet clear where that content will come from, however, and the feature has not yet been implemented. It seems likely that Canonical will attempt to launch a video store, much like the music store that is built into Ubuntu's standard audio application.
+
+The modularity inherent in Unity lenses should theoretically make Ubuntu TV easy to enhance in the future. Lenses could potentially be implemented to add support for various streaming media services and Internet video sources.
+
+The Ubuntu TV shell is built on top of Unity 2D, a special variant of the Unity front-end that doesn't require a compositing window manager. Unity 2D was originally created as a fallback for hardware environments that don't support hardware-accelerated 3D graphics. It's particularly well-suited for embedded systems that don't have desktop-class graphics hardware.
+
+Unity 2D is built with Nokia's open source Qt development framework. Significant portions of the Unity 2D interface were coded with QML, a declarative domain-specific programming language for describing user interface layouts.
+
+Similar to XAML and JavaFX, QML is handy for building interactive user experiences that aren't constrained by the limitations of traditional user interface toolkits. The flexibility offered by QML will be useful for Ubuntu TV licensees because it will make it easy for them to rebrand the environment or make deeper changes to the look and feel.
+
+Canonical also put the strengths of QML to good use itself in the Ubuntu TV front-end. Some key parts of the shell, such as the television listing timeline, were implemented almost entirely in QML. The logic for loading and parsing the timeline data is implemented in JavaScript functions that are embedded in the QML layout descriptions.
+
+Ubuntu TV's video playback is handled by GStreamer, a feature-rich open source multimedia framework. GStreamer is widely used on the Linux desktop and is increasingly popular on mobile and embedded Linux systems. The Ubuntu TV environment can play media files in any format that is supported by GStreamer. It's worth noting that third parties have even brought legal support for mainstream proprietary codecs to GStreamer.
+
+Conclusion
+
+Ubuntu TV is off to a good start, but it's clearly still at an early stage of development. It's not yet as mature or feature-complete as existing open source software projects for television, such as the popular MythTV environment. Despite the limited functionality and the lack of completeness, we still saw a lot to like in Ubuntu TV.
+
+Canonical is fortunately opening the project up to the Ubuntu community and seeking the participation of third-party developers. The parts implemented by Canonical are licensed under the GNU General Public License (GPL). The company has acknowledged that there are opportunities to collaborate with existing projects, such as MythTV and XBMC, to improve shared parts of the open source television stack. Ubuntu TV could also potentially attract involvement from embedded Linux enthusiasts who want to work on a nice software environment for homebrew ARM set-top boxes.
+
+The long-term goals of the project are ambitious. An architecture chart published by Canonical indicates that additional features like music streaming, video conferencing, and games are going to be added in the future. The company is also looking at ways that it can integrate its Ubuntu One cloud service with the television environment.
+
+
+The Ubuntu TV architecture
+Canonical
+Smart TV functionality is becoming an increasingly important trend as hardware manufacturers seek to differentiate their television sets. Some of the popular software suites that have traditionally been used on home theater PCs, such as Boxee and Plex, are making their way onto set-top boxes and televisions. Plex, for example, is licensed by LG and ships on some of the company's devices.
+
+An open source television platform based on Ubuntu could be appealing to some hardware manufacturers that don't yet have their own embedded smart television software yet. If Ubuntu TV becomes popular, Canonical could profit by tying in its own video rental service or selling commercial licenses to hardware vendors who want the code under more permissive terms.
+
+Ubuntu TV looks like a great idea, and a project that will pave the way for Canonical's future endeavors in the mobile and embedded space. Users who want to start participating in the Ubuntu TV project can get started by visiting the contributor page on the Ubuntu website.

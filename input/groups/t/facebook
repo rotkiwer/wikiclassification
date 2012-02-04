@@ -1,0 +1,45 @@
+Worm steals 45,000 Facebook passwords, researchers say
+
+More malware is worming its way onto social networks.
+Continue reading the main story
+Related Stories
+
+Hackers 'hit city services' in US
+HTML 5 target for cybercriminals
+Apple store hit by malicious app
+A computer worm has stolen 45,000 login credentials from Facebook, security experts have warned.
+
+The data is believed to have been taken largely from Facebook accounts in the UK and France, according to security firm Seculert.
+
+The culprit is a well-known piece of malware - dubbed Ramnit - which has been around since April 2010 and has previously stolen banking details.
+
+Facebook told the BBC that it was looking into the issue.
+
+The latest iteration of the worm was discovered in Seculert's labs.
+
+"We suspect that the attackers behind Ramnit are using the stolen credentials to login to victims' Facebook accounts and to transmit malicious links to their friends, thereby magnifying the malware's spread even further," said the researchers on the firm's blog.
+
+"In addition, cybercriminals are taking advantage of the fact that users tend to use the same password in various web-based services to gain remote access to corporate networks," it added.
+
+'Viral power'
+Social networks offer rich pickings for hackers because of the huge amount of personal data that is stored on them. Increasingly malware is being updated for the social networking age.
+
+"It appears that sophisticated hackers are now experimenting with replacing the old-school email worms with more up-to-date social network worms. As demonstrated by the 45,000 compromised Facebook subscribers, the viral power of social networks can be manipulated to cause considerable damage to individuals and institutions when it is in the wrong hands," said Seculert.
+
+According to Seculert, 800,000 machines were infected with Ramnit from September to the end of December 2011.
+
+Microsoft's Malware Protection Center (MMPC) described Ramnit as "a multi-component malware family which infects Windows executable as well as HTML files... stealing sensitive information such as stored FTP credentials and browser cookies".
+
+In July 2011 a Symantec report estimated that Ramnit worm variants accounted for 17.3% of all new malicious software infections.
+
+For Facebook users concerned that they have been affected by the worm, the advice is to run anti-virus software.
+
+"It won't necessarily be obvious that you have been attacked. The worm is stealing passwords so it is not going to announce itself," said Graham Cluley, senior security consultant at Sophos.
+
+Update - Friday 6 January, 10:22am: Facebook has responded to this article with the following statement:
+
+"Last week we received from external security researchers a set of user credentials that had been harvested by a piece of malware. Our security experts have reviewed the data, and while the majority of the information was out-of-date, we have initiated remedial steps for all affected users to ensure the security of their accounts.
+
+"Thus far, we have not seen the virus propagating on Facebook itself, but have begun working with our external partners to add protections to our anti-virus systems to help users secure their devices. People can protect themselves by never clicking on strange links and reporting any suspicious activity they encounter on Facebook.
+
+"We encourage our users to become fans of the Facebook Security Page for additional security information."

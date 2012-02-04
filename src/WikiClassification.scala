@@ -120,12 +120,12 @@
     
     // Transforms tree into flat immutable set structure.
     def convertCategoriesTreeToSet(tree: CategoriesTree): Set[String] = {
-	  def addValueToSet(tree: CategoriesTree, set: mutable.HashSet[String] = new mutable.HashSet[String]): mutable.Set[String] = {
-	    set += tree.name
-	    tree.subcategories foreach { subtree => addValueToSet(subtree, set)}
-	    set
-	  }
-	  addValueToSet(tree).toSet // immutable
+      def addValueToSet(tree: CategoriesTree, set: mutable.HashSet[String] = new mutable.HashSet[String]): mutable.Set[String] = {
+        set += tree.name
+        tree.subcategories foreach { subtree => addValueToSet(subtree, set)}
+        set
+      }
+      addValueToSet(tree).toSet // immutable
     }    
     
     // Builds one big flat categories set for all words.
@@ -174,7 +174,7 @@
       	log(documentName.splitAt(documentName.indexOf("_"))._1 + ";" + groupName)
       }
             
-      // ---          
+      // --- helpers:         
       
       def findGroupForDocument(groupsToCategoriesMap: Map[String, Set[String]], filesToCategoriesMap: Map[String, Set[String]], documentName: String): String = {
         var maxIntersection = immutable.Set[String]()
@@ -196,15 +196,15 @@
       def getGroupsCategoriesMap(serializedFileName: String): Map[String, Set[String]] = {
         val serializedGroupsCategoriesFileExists = new File(serializedGroupsCategoriesFileName).exists() 
         val map =
-		  if (serializedGroupsCategoriesFileExists) {
-		    log("\nUsing categories sets for groups from serialized file (" + serializedFileName + ")")
-		    deserializeGroupsCategoriesMap(serializedGroupsCategoriesFileName)
-		  }
-		  else {
-		    initGroupsCategoriesMap()
-		  } 
-	    if (!serializedGroupsCategoriesFileExists) serializeGroupsCategoriesMap(map, serializedGroupsCategoriesFileName)
-	    map
+          if (serializedGroupsCategoriesFileExists) {
+            log("\nUsing categories sets for groups from serialized file (" + serializedFileName + ")")
+            deserializeGroupsCategoriesMap(serializedGroupsCategoriesFileName)
+          }
+          else {
+            initGroupsCategoriesMap()
+          } 
+        if (!serializedGroupsCategoriesFileExists) serializeGroupsCategoriesMap(map, serializedGroupsCategoriesFileName)
+        map
       }
       
       // init sets for each group (i.e. for each document in each group and merge in groups)
@@ -242,18 +242,18 @@
       }       
       
       def serializeGroupsCategoriesMap(map: Map[String, Set[String]], fileName: String) {
-	    val fos = new FileOutputStream(fileName);
-	    val out = new ObjectOutputStream(fos);
-	    out.writeObject(map);
-	    out.close();
+        val fos = new FileOutputStream(fileName);
+        val out = new ObjectOutputStream(fos);
+        out.writeObject(map);
+        out.close();
       }
       
       def deserializeGroupsCategoriesMap(fileName: String): Map[String, Set[String]] = {
-	    val fis = new FileInputStream(fileName);
-	    val in = new ObjectInputStream(fis);
-	    val map = in.readObject().asInstanceOf[Map[String, Set[String]]]
-	    in.close();
-	    map
+        val fis = new FileInputStream(fileName);
+        val in = new ObjectInputStream(fis);
+        val map = in.readObject().asInstanceOf[Map[String, Set[String]]]
+        in.close();
+        map
       }        
       
     }
